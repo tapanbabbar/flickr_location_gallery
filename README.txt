@@ -1,3 +1,1 @@
-A Pen created at CodePen.io. You can find this one at http://codepen.io/tapanbabbar/pen/WOJpJG.
-
- 
+Using AngularJS created a simple single page application that shows a google map, and allows the user to drop a pin and see (public) Flickr images that have been taken at that location. 
