@@ -36,6 +36,10 @@ app.controller('mainCtrl', function($scope, $http, $filter) {
 
                // Add new marker
                $scope.$apply();
+			    
+   document.getElementById('img-cont').classList.remove("collapse");
+   document.getElementById('map-cont').classList.remove("collapse");
+			   
                 
               $http.get("https://api.flickr.com/services/rest/?method=flickr.places.findByLatLon&api_key=a5e95177da353f58113fd60296e1d250&lat="+lat+"&lon="+lon+"&accuracy=10&format=json&nojsoncallback=1").then(function(res) {
                 $scope.message = 'You are browsing in '+res.data.places.place[0].woe_name;

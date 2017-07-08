@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Find by Lat Long on Flickr using Google Map API on Angular</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
   
-  
-  
-      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/style.min.css">
 
   
 </head>
 
-<body>
   <body ng-app="main" ng-controller="mainCtrl">
-<div class="map-cont">
+<div class="map-cont collapse" ng-class="autoScroll ? '' : 'collapse'" id="map-cont">
   <div >
     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" events="map.events">
       <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
     </ui-gmap-google-map>
   </div>
 </div>
-<div class="img-cont"> 
+<div class="img-cont collapse" ng-class="autoScroll ? '' : 'collapse'" id="img-cont"> 
+
+<div class="img-header">
   <div class="btn-cont">
   <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
         Previous
@@ -30,11 +31,11 @@
         Next
    </button></div>
   
-  <h3> {{message}}</h3>
+  <h3> {{message}}</h3></div>
  <ul>
    <li ng-repeat="x in records| startFrom:currentPage*pageSize | limitTo:pageSize">
    
-   <div> <h3>{{x.title}}</h3></div>
+   <div class="list-inner"> <h4>{{x.title}}</h4></div>
     <img src="https://farm{{x.farm}}.staticflickr.com/{{x.server}}/{{x.id}}_{{x.secret}}.jpg">
    
    
@@ -42,8 +43,10 @@
    
   </ul>
 
+    
+    <button class="down-btn" ng-click="autoScroll = !autoScroll"><i class="arrow down"></i></button>
 
-  
+
   </div>
 </body>
   <script src='https://maps.googleapis.com/maps/api/js?sensor=false''></script>
@@ -51,7 +54,6 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.0.12/angular-google-maps.min.js'></script>
 
-    <script src="js/index.js"></script>
+    <script src="js/script.js"></script>
 
-</body>
 </html>
